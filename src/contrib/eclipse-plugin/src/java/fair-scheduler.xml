@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<!--
+  This file contains pool and user allocations for the Fair Scheduler.
+  Its format is explained in the Fair Scheduler documentation at
+  http://hadoop.apache.org/common/docs/r0.20.205.0/fair_scheduler.html.
+  The documentation also includes a sample config file.
+-->
+
+<allocations>
+  <pool name="hdpusr">
+    <minMaps>2</minMaps>
+    <minReduces>2</minReduces>
+    <weight>2.0</weight>
+  </pool>
+  <pool name="hdpadmin">
+    <minMaps>2</minMaps>
+    <minReduces>2</minReduces>
+    <weight>2.0</weight>
+  </pool>
+  <user name="hdpusr">
+    <maxRunningJobs>6</maxRunningJobs>
+  </user>
+  <userMaxJobsDefault>3</userMaxJobsDefault>
+</allocations>
