@@ -222,13 +222,12 @@ public class HadoopServer {
    */
   public HadoopServer() {
     this.conf = new Configuration();
-    
-//    conf.addResource("core-default.xml");
-    conf.addResource("mapred-default.xml");
+    //this.conf.setQuietMode(false);
+   
     conf.addResource("yarn-default.xml");
+    conf.addResource("mapred-default.xml");
     
-    log.info( " load configuration ..." + this.conf.toString() );
-    
+    log.info( " load configuration ..." + conf.toString() );
     
     this.addPluginConfigDefaultProperties();
   }
