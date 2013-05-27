@@ -96,6 +96,18 @@
            <include name="hadoop*.jar"/>
           </fileset>
     </copy>
+    <copy  todir="${build.dir}/lib/" verbose="true">
+          <fileset dir="${hadoop.home}/share/hadoop/yarn">
+           <include name="hadoop*.jar"/>
+          </fileset>
+    </copy>
+
+    <copy  todir="${build.dir}/classes" verbose="true">
+          <fileset dir="${hadoop.home}/etc/hadoop">
+           <include name="*.xml"/>
+          </fileset>
+    </copy>
+
 
 
     <copy file="${hadoop.home}/share/hadoop/common/lib/protobuf-java-2.4.0a.jar"  todir="${build.dir}/lib" verbose="true"/>
@@ -114,6 +126,7 @@
       jarfile="${build.dir}/hadoop-${name}-${version}.jar"
       manifest="${root}/META-INF/MANIFEST.MF">
       <fileset dir="${build.dir}" includes="classes/ lib/"/>
+      <!--fileset dir="${build.dir}" includes="*.xml"/-->
       <fileset dir="${root}" includes="resources/ plugin.xml"/>
     </jar>
   </target>

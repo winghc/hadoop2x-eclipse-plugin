@@ -17,6 +17,12 @@
 <!-- Site specific YARN configuration properties -->
 
 <property>
+  <name>pactera.ipc.serializer</name>
+  <value>yahoo</value>
+</property>
+
+
+<property>
   <name>yarn.ipc.serializer.type</name>
   <value>protocolbuffers</value>
 </property>

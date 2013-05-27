@@ -222,6 +222,12 @@ public class HadoopServer {
    */
   public HadoopServer() {
     this.conf = new Configuration();
+    
+    conf.addResource("core-default.xml");
+    conf.addResource("yarn-site.xml");
+    
+    log.info( " load configuration ..."  );
+    
     this.addPluginConfigDefaultProperties();
   }
 
@@ -352,6 +358,8 @@ public class HadoopServer {
       SAXException, IOException {
 
     Configuration newConf = new Configuration(this.conf);
+    
+    log.info( "loadxml from file: " + file.toString()  );
 
     DocumentBuilder builder =
         DocumentBuilderFactory.newInstance().newDocumentBuilder();
