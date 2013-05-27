@@ -223,10 +223,12 @@ public class HadoopServer {
   public HadoopServer() {
     this.conf = new Configuration();
     
-    conf.addResource("core-default.xml");
-    conf.addResource("yarn-site.xml");
+//    conf.addResource("core-default.xml");
+    conf.addResource("mapred-default.xml");
+    conf.addResource("yarn-default.xml");
     
-    log.info( " load configuration ..."  );
+    log.info( " load configuration ..." + this.conf.toString() );
+    
     
     this.addPluginConfigDefaultProperties();
   }
