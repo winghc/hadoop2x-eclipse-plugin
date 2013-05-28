@@ -57,38 +57,41 @@ public class MapReduceNature implements IProjectNature {
     String path =
         project.getPersistentProperty(new QualifiedName(Activator.PLUGIN_ID,
             "hadoop.runtime.path"));
-
-    File dir = new File(path);
+    
+    path += File.separatorChar +  "share" + File.separatorChar +"hadoop";
+    String[] dirs={"common","mapreduce","hdfs","yarn"};
     final ArrayList<File> coreJars = new ArrayList<File>();
-    dir.listFiles(new FileFilter() {
-      public boolean accept(File pathname) {
-        String fileName = pathname.getName();
-
-        // get the hadoop core jar without touching test or examples
-        // older version of hadoop don't use the word "core" -- eyhung
-        if ((fileName.indexOf("hadoop") != -1) && (fileName.endsWith("jar"))
-            && (fileName.indexOf("test") == -1)
-            && (fileName.indexOf("examples") == -1)) {
-          coreJars.add(pathname);
-        }
-
-        return false; // we don't care what this returns
-      }
-    });
-    File dir2 = new File(path + File.separatorChar + "lib");
-    if (dir2.exists() && dir2.isDirectory()) {
-      dir2.listFiles(new FileFilter() {
+    for(String sub:dirs){
+      File dir = new File(path + File.separatorChar + sub);
+      dir.listFiles(new FileFilter() {
         public boolean accept(File pathname) {
-          if ((!pathname.isDirectory())
-              && (pathname.getName().endsWith("jar"))) {
+          String fileName = pathname.getName();
+
+          // get the hadoop core jar without touching test or examples
+          // older version of hadoop don't use the word "core" -- eyhung
+          if ((fileName.indexOf("hadoop") != -1) && (fileName.endsWith("jar"))
+              && (fileName.indexOf("test") == -1)
+              && (fileName.indexOf("examples") == -1)) {
             coreJars.add(pathname);
           }
-
+  
           return false; // we don't care what this returns
         }
       });
+      File dir2 = new File(path + File.separatorChar + sub + File.separatorChar + "lib");
+      if (dir2.exists() && dir2.isDirectory()) {
+        dir2.listFiles(new FileFilter() {
+          public boolean accept(File pathname) {
+            if ((!pathname.isDirectory())
+                && (pathname.getName().endsWith("jar"))) {
+              coreJars.add(pathname);
+            }
+  
+            return false; // we don't care what this returns
+          }
+        });
+      }
     }
-
     // Add Hadoop libraries onto classpath
     IJavaProject javaProject = JavaCore.create(getProject());
     // Bundle bundle = Activator.getDefault().getBundle();

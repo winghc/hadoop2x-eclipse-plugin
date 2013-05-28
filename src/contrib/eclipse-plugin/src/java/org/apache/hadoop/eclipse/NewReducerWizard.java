@@ -100,19 +100,13 @@ public class NewReducerWizard extends NewElementWizard implements
         IProgressMonitor monitor) throws CoreException {
       super.createTypeMembers(newType, imports, monitor);
       imports.addImport("java.io.IOException");
-      imports.addImport("org.apache.hadoop.io.WritableComparable");
-      imports.addImport("org.apache.hadoop.mapred.OutputCollector");
-      imports.addImport("org.apache.hadoop.mapred.Reporter");
-      imports.addImport("java.util.Iterator");
+      imports.addImport("org.apache.hadoop.io.Text");
       newType
           .createMethod(
-              "public void reduce(WritableComparable _key, Iterator values, OutputCollector output, Reporter reporter) throws IOException \n{\n"
-                  + "\t// replace KeyType with the real type of your key\n"
-                  + "\tKeyType key = (KeyType) _key;\n\n"
-                  + "\twhile (values.hasNext()) {\n"
-                  + "\t\t// replace ValueType with the real type of your value\n"
-                  + "\t\tValueType value = (ValueType) values.next();\n\n"
-                  + "\t\t// process value\n" + "\t}\n" + "}\n", null, false,
+              "public void reduce(Text _key, Iterable<Text> values, Context context) throws IOException,InterruptedException \n{\n"
+                  + "\t// process values\n"
+                  + "\tfor(Text val:values){\n\n"
+                  + "\t}\n" + "}\n", null, false,
               monitor);
     }
 
@@ -135,9 +129,7 @@ public class NewReducerWizard extends NewElementWizard implements
 
       setControl(composite);
 
-      setSuperClass("org.apache.hadoop.mapred.MapReduceBase", true);
-      setSuperInterfaces(Arrays
-          .asList(new String[] { "org.apache.hadoop.mapred.Reducer" }), true);
+      setSuperClass("org.apache.hadoop.mapreduce.Reducer<Text,Text,Text,Text>", true);
 
       setFocus();
       validate();

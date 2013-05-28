@@ -1,7 +1,0 @@
-This is eclipse plug-in for hadoop 2.0.x
-
-#how to compile
-
-cd src/contrib/eclipse-plugin
-source makePlus.sh
-
