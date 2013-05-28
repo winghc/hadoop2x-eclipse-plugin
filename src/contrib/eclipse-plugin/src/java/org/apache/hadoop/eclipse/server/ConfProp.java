@@ -24,6 +24,20 @@ import java.util.Map;
 import org.apache.hadoop.conf.Configuration;
 
 public enum ConfProp {
+
+  
+  /**
+   * Property name for the The runtime framework for executing MapReduce jobs. Can be one of local, classic or yarn
+   */
+  PI_MRFRAMEWORK_NAME(false, "mapreduce.framework.name", "local"),
+  
+  
+  /**
+   * Property name for the applications manager address in the RM.
+   */
+  PI_RESOURCEMANAGER_ADDRESS(false, "yarn.resourcemanager.address", "0.0.0.0:8032"),
+  
+    
   /**
    * Property name for the Hadoop location name
    */
@@ -84,7 +98,7 @@ public enum ConfProp {
    * Property name for naming the job tracker (URI). This property is related
    * to {@link #PI_MASTER_HOST_NAME}
    */
-  JOB_TRACKER_URI(false, "mapred.job.tracker", "localhost:50020"),
+  JOB_TRACKER_URI(false, "mapreduce.job.tracker", "localhost:50020"),
 
   /**
    * Property name for naming the default file system (URI).

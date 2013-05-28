@@ -103,7 +103,7 @@
     </copy>
 
     <copy  todir="${build.dir}/classes" verbose="true">
-          <fileset dir="${hadoop.home}/etc/hadoop">
+          <fileset dir="${root}/src/java">
            <include name="*.xml"/>
           </fileset>
     </copy>
