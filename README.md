@@ -1,4 +1,7 @@
-This is eclipse plug-in for hadoop 2.0.x
+hadoop2x-eclipse-plugin
+=======================
+
+eclipse plugin for hadoop 2.0.x
 
 #how to build
 
