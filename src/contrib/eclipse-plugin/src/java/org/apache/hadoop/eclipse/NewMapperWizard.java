@@ -103,13 +103,11 @@ public class NewMapperWizard extends NewElementWizard implements INewWizard,
         IProgressMonitor monitor) throws CoreException {
       super.createTypeMembers(newType, imports, monitor);
       imports.addImport("java.io.IOException");
-      imports.addImport("org.apache.hadoop.io.WritableComparable");
-      imports.addImport("org.apache.hadoop.io.Writable");
-      imports.addImport("org.apache.hadoop.mapred.OutputCollector");
-      imports.addImport("org.apache.hadoop.mapred.Reporter");
+      imports.addImport("org.apache.hadoop.io.LongWritable");
+      imports.addImport("org.apache.hadoop.io.Text");
       newType
           .createMethod(
-              "public void map(WritableComparable key, Writable values, OutputCollector output, Reporter reporter) throws IOException \n{\n}\n",
+              "public void map(LongWritable ikey, Text ivalue, Context context) throws IOException,InterruptedException {\n\n}\n",
               null, false, monitor);
     }
 
@@ -131,10 +129,8 @@ public class NewMapperWizard extends NewElementWizard implements INewWizard,
       // createSeparator(composite, 4);
 
       setControl(composite);
-
-      setSuperClass("org.apache.hadoop.mapred.MapReduceBase", true);
-      setSuperInterfaces(Arrays
-          .asList(new String[] { "org.apache.hadoop.mapred.Mapper" }), true);
+      
+      setSuperClass("org.apache.hadoop.mapreduce.Mapper<LongWritable,Text,Text,Text>", true);
 
       setFocus();
       validate();

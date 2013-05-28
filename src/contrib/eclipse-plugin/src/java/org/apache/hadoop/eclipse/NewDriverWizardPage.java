@@ -93,11 +93,12 @@ public class NewDriverWizardPage extends NewTypeWizardPage {
     super.createTypeMembers(newType, imports, monitor);
     imports.addImport("org.apache.hadoop.fs.Path");
     imports.addImport("org.apache.hadoop.io.Text");
-    imports.addImport("org.apache.hadoop.io.IntWritable");
-    imports.addImport("org.apache.hadoop.mapred.JobClient");
-    imports.addImport("org.apache.hadoop.mapred.JobConf");
-    imports.addImport("org.apache.hadoop.mapred.Reducer");
-    imports.addImport("org.apache.hadoop.mapred.Mapper");
+    imports.addImport("org.apache.hadoop.conf.Configuration");
+    imports.addImport("org.apache.hadoop.mapreduce.Job");
+    imports.addImport("org.apache.hadoop.mapreduce.Reducer");
+    imports.addImport("org.apache.hadoop.mapreduce.Mapper");
+    imports.addImport("org.apache.hadoop.mapreduce.lib.input.FileInputFormat");
+    imports.addImport("org.apache.hadoop.mapreduce.lib.output.FileOutputFormat");
 
     /**
      * TODO(jz) - move most code out of the runnable
@@ -105,30 +106,30 @@ public class NewDriverWizardPage extends NewTypeWizardPage {
     getContainer().getShell().getDisplay().syncExec(new Runnable() {
       public void run() {
 
-        String method = "public static void main(String[] args) {\n JobClient client = new JobClient();";
-        method += "JobConf conf = new JobConf("
-            + newType.getFullyQualifiedName() + ".class);\n\n";
-
-        method += "// TODO: specify output types\nconf.setOutputKeyClass(Text.class);\nconf.setOutputValueClass(IntWritable.class);\n\n";
-
-        method += "// TODO: specify input and output DIRECTORIES (not files)\nconf.setInputPath(new Path(\"src\"));\nconf.setOutputPath(new Path(\"out\"));\n\n";
+        String method = "public static void main(String[] args) throws Exception{\n";
+        method += "Configuration conf = new Configuration();\n";
+        method += "Job job = Job.getInstance(conf,\"JobName\");\n";
+        method += "job.setJarByClass("
+            + newType.getFullyQualifiedName() + ".class);\n";
 
         if (mapperText.getText().length() > 0) {
-          method += "conf.setMapperClass(" + mapperText.getText()
+          method += "job.setMapperClass(" + mapperText.getText()
               + ".class);\n\n";
         } else {
-          method += "// TODO: specify a mapper\nconf.setMapperClass(org.apache.hadoop.mapred.lib.IdentityMapper.class);\n\n";
+          method += "// TODO: specify a mapper\njob.setMapperClass(Mapper.class);\n";
         }
         if (reducerText.getText().length() > 0) {
-          method += "conf.setReducerClass(" + reducerText.getText()
+          method += "job.setReducerClass(" + reducerText.getText()
               + ".class);\n\n";
         } else {
-          method += "// TODO: specify a reducer\nconf.setReducerClass(org.apache.hadoop.mapred.lib.IdentityReducer.class);\n\n";
+          method += "// TODO: specify a reducer\njob.setReducerClass(Reducer.class);\n\n";
         }
+        
+        method += "// TODO: specify output types\njob.setOutputKeyClass(Text.class);\njob.setOutputValueClass(Text.class);\n\n";
 
-        method += "client.setConf(conf);\n";
-        method += "try {\n\tJobClient.runJob(conf);\n} catch (Exception e) {\n"
-            + "\te.printStackTrace();\n}\n";
+        method += "// TODO: specify input and output DIRECTORIES (not files)\nFileInputFormat.setInputPaths(job , new Path(\"src\"));\nFileOutputFormat.setOutputPath(job , new Path(\"out\"));\n\n";
+
+        method += "if(!job.waitForCompletion(true))\n\treturn;";
         method += "}\n";
 
         try {
@@ -197,12 +198,12 @@ public class NewDriverWizardPage extends NewTypeWizardPage {
 
   private void createMapperControls(Composite composite) {
     this.mapperText = createBrowseClassControl(composite, "Ma&pper:",
-        "&Browse...", "org.apache.hadoop.mapred.Mapper", "Mapper Selection");
+        "&Browse...", "org.apache.hadoop.mapreduce.Mapper", "Mapper Selection");
   }
 
   private void createReducerControls(Composite composite) {
     this.reducerText = createBrowseClassControl(composite, "&Reducer:",
-        "Browse&...", "org.apache.hadoop.mapred.Reducer", "Reducer Selection");
+        "Browse&...", "org.apache.hadoop.mapreduce.Reducer", "Reducer Selection");
   }
 
   private Text createBrowseClassControl(final Composite composite,
