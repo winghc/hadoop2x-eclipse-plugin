@@ -224,10 +224,7 @@ public class HadoopServer {
     this.conf = new Configuration();
     //this.conf.setQuietMode(false);
    
-    conf.addResource("yarn-default.xml");
-    conf.addResource("mapred-default.xml");
-    
-    log.info( " load configuration ..." + conf.toString() );
+    log.info(" load configuration ..." + conf.toString() );    
     
     this.addPluginConfigDefaultProperties();
   }
@@ -451,7 +448,10 @@ public class HadoopServer {
   private void addPluginConfigDefaultProperties() {
     for (ConfProp prop : ConfProp.values()) {
       if (conf.get(prop.name) == null)
+      {
+        log.info("add pro:" + prop.name );
         conf.set(prop.name, prop.defVal);
+      }
     }
   }
 

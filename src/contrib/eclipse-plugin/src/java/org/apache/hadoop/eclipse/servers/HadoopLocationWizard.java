@@ -651,7 +651,7 @@ public class HadoopLocationWizard extends WizardPage {
        */
       {
         Group groupMR = new Group(panel, SWT.SHADOW_NONE);
-        groupMR.setText("Map/Reduce Master");
+        groupMR.setText("Map/Reduce(V2) Master");
         groupMR.setToolTipText("Address of the Map/Reduce master node "
             + "(the Job Tracker).");
         GridLayout layout = new GridLayout(2, false);
