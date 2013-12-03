@@ -26,27 +26,27 @@
   <dependencies>
     <dependency org="org.apache.hadoop"
       name="hadoop-mapreduce-client-jobclient"
-      rev="2.0.4-alpha"
+      rev="${hadoop.version}"
       conf="common->default"/>
     
     <dependency org="org.apache.hadoop"
       name="hadoop-mapreduce-client-core"
-      rev="2.0.4-alpha"
+      rev="${hadoop.version}"
       conf="common->default"/>
 
     <dependency org="org.apache.hadoop"
       name="hadoop-mapreduce-client-common"
-      rev="2.0.4-alpha"
+      rev="${hadoop.version}"
       conf="common->default"/>
     
     <dependency org="org.apache.hadoop"
       name="hadoop-hdfs"
-      rev="2.0.4-alpha"
+      rev="${hadoop.version}"
       conf="common->default"/>
 
     <dependency org="org.apache.hadoop"
       name="hadoop-common"
-      rev="2.0.4-alpha"
+      rev="${hadoop.version}"
       conf="common->default"/>
 
 

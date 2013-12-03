@@ -110,18 +110,19 @@
 
 
 
-    <copy file="${hadoop.home}/share/hadoop/common/lib/protobuf-java-2.4.0a.jar"  todir="${build.dir}/lib" verbose="true"/>
-    <copy file="${hadoop.home}/share/hadoop/common/lib/log4j-1.2.17.jar"  todir="${build.dir}/lib" verbose="true"/>
-    <copy file="${hadoop.home}/share/hadoop/common/lib/commons-cli-1.2.jar"  todir="${build.dir}/lib" verbose="true"/>
-    <copy file="${hadoop.home}/share/hadoop/common/lib/commons-configuration-1.6.jar"  todir="${build.dir}/lib" verbose="true"/>
-    <copy file="${hadoop.home}/share/hadoop/common/lib/commons-lang-2.5.jar"  todir="${build.dir}/lib" verbose="true"/>
-    <copy file="${hadoop.home}/share/hadoop/common/lib/jackson-core-asl-1.8.8.jar"  todir="${build.dir}/lib" verbose="true"/>
-    <copy file="${hadoop.home}/share/hadoop/common/lib/jackson-mapper-asl-1.8.8.jar"  todir="${build.dir}/lib" verbose="true"/>
-    <copy file="${hadoop.home}/share/hadoop/common/lib/slf4j-log4j12-1.6.1.jar"  todir="${build.dir}/lib" verbose="true"/>
-    <copy file="${hadoop.home}/share/hadoop/common/lib/slf4j-api-1.6.1.jar"  todir="${build.dir}/lib" verbose="true"/>
-    <copy file="${hadoop.home}/share/hadoop/common/lib/guava-11.0.2.jar"  todir="${build.dir}/lib" verbose="true"/>
-    <copy file="${hadoop.home}/share/hadoop/common/lib/hadoop-auth-2.0.4-alpha.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/protobuf-java-${protobuf.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/log4j-${log4j.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
     <copy file="${hadoop.home}/share/hadoop/common/lib/commons-cli-${commons-cli.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/commons-configuration-${commons-configuration.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/commons-lang-${commons-lang.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/jackson-core-asl-${jackson.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/jackson-mapper-asl-${jackson.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/slf4j-log4j12-${slf4j-log4j12.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/slf4j-api-${slf4j-api.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/guava-${guava.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/hadoop-auth-${hadoop.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/commons-cli-${commons-cli.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/netty-${netty.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
     <jar
       jarfile="${build.dir}/hadoop-${name}-${version}.jar"
       manifest="${root}/META-INF/MANIFEST.MF">
