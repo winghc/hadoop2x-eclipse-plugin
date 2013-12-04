@@ -123,9 +123,32 @@
     <copy file="${hadoop.home}/share/hadoop/common/lib/hadoop-auth-${hadoop.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
     <copy file="${hadoop.home}/share/hadoop/common/lib/commons-cli-${commons-cli.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
     <copy file="${hadoop.home}/share/hadoop/common/lib/netty-${netty.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+
     <jar
       jarfile="${build.dir}/hadoop-${name}-${version}.jar"
       manifest="${root}/META-INF/MANIFEST.MF">
+      <manifest>
+	 <attribute name="Bundle-ClassPath" 
+		value="classes/, 
+ lib/hadoop-mapreduce-client-core-${hadoop.version}.jar,
+ lib/hadoop-mapreduce-client-common-${hadoop.version}.jar,
+ lib/hadoop-mapreduce-client-jobclient-${hadoop.version}.jar,
+ lib/hadoop-auth-${hadoop.version}.jar,
+ lib/hadoop-common-${hadoop.version}.jar,
+ lib/hadoop-hdfs-${hadoop.version}.jar,
+ lib/protobuf-java-${protobuf.version}.jar,
+ lib/log4j-${log4j.version}.jar,
+ lib/commons-cli-1.2.jar,
+ lib/commons-configuration-1.6.jar,
+ lib/commons-httpclient-3.1.jar,
+ lib/commons-lang-2.5.jar,
+ lib/jackson-core-asl-1.8.8.jar,
+ lib/jackson-mapper-asl-1.8.8.jar,
+ lib/slf4j-log4j12-1.7.5.jar,
+ lib/slf4j-api-1.7.5.jar,
+ lib/guava-${guava.version}.jar,
+ lib/netty-${netty.version}.jar"/>
+	 </manifest>
       <fileset dir="${build.dir}" includes="classes/ lib/"/>
       <!--fileset dir="${build.dir}" includes="*.xml"/-->
       <fileset dir="${root}" includes="resources/ plugin.xml"/>
