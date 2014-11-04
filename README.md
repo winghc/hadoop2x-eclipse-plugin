@@ -1,7 +1,7 @@
 hadoop2x-eclipse-plugin
 =======================
 
-eclipse plugin for hadoop 2.5.1
+eclipse plugin for hadoop  2.5.1
  
 
 How to build
