@@ -1,25 +1,41 @@
 hadoop2x-eclipse-plugin
 =======================
 
-eclipse plugin for hadoop 2.2.0
+eclipse plugin for hadoop 2.x.x
  
 
 How to build
 ----------------------------------------
 
-  $cd src/contrib/eclipse-plugin 
+ [hdpusr@demo hadoop2x-eclipse-plugin]$ cd src/contrib/eclipse-plugin 
 
-  $ant jar -Dversion=2.2.0 -Declipse.home=/opt/eclipse -Dhadoop.home=/usr/share/hadoop
+ # Assume hadoop installation directory is /usr/share/hadoop
 
-final jar will be genrated at directory 
+ [hdpusr@apclt eclipse-plugin]$ ant jar -Dversion=2.4.1 -Dhadoop.version=2.4.1 -Declipse.home=/opt/eclipse -Dhadoop.home=/usr/share/hadoop
 
-  $root/build/contrib/eclipse-plugin/hadoop-eclipse-plugin-2.2.0.jar
+final jar will be generated at directory 
+
+  ${hadoop2x-eclipse-plugin}/build/contrib/eclipse-plugin/hadoop-eclipse-plugin-2.4.1.jar
+
+  
+release version included
+-------------------------------------
+ 
+  release/hadoop-eclipse-kepler-plugin-2.4.1.jar  # not tested yet
+ 
+  release/hadoop-eclipse-kepler-plugin-2.2.0.jar  
+  
 
 options required
 --------------------------------------
+  version: plugin version
+  
+  hadoop.version:  hadoop version you want to compiled with
+
   eclipse.home: path of eclipse home 
 
   hadoop.home: path of hadoop 2.x home
+
  
 
 How to debug
@@ -31,9 +47,5 @@ How to debug
 
 Note: compile issues resolve: 
 --------------------------------------
-1. Check the version that you want to cimpile with, e.g: hadoop-eclipse-plugin-2.4.0.jar 
-2. Find the jars version at the file build.xml in the node: <attribute name="Bundle-ClassPath" .... 
-   and add the folder named "lib" at the path, e.g: ${hadoop2x-eclipse-plugin-master}\src\contrib\eclipse-plugin\lib
-   also add the needed jar files to this folder which this node needed, and the version written in the file
-   ${hadoop2x-eclipse-plugin-master}\ivy\libraries.properties, make the version is correct.
-3. Then run the command: ant jar -Dversion=2.4.0 -Declipse.home=/opt/eclipse -Dhadoop.home=/usr/share/hadoop
+1. For different hadoop, adjust ${hadoop2x-eclipse-plugin-master}/ivy/libraries.properties, to match hadoop dependency lib version.
+1. modify ${hadoop2x-eclipse-plugin}/src/contrib/eclipse-plugin/build.xml, in the node: <attribute name="Bundle-ClassPath" ....  to add the jar needed. 
