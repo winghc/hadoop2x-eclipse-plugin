@@ -466,7 +466,8 @@
     <get src="${ivy_repo_url}" dest="${ivy.jar}" usetimestamp="true"/>
   </target>
 
-  <target name="ivy-init-antlib" depends="ivy-download,ivy-probe-antlib" unless="ivy.found">
+  <!--target name="ivy-init-antlib" depends="ivy-download,ivy-probe-antlib" unless="ivy.found"-->
+  <target name="ivy-init-antlib" depends="ivy-probe-antlib" unless="ivy.found">
     <typedef uri="antlib:org.apache.ivy.ant" onerror="fail"
       loaderRef="ivyLoader">
       <classpath>

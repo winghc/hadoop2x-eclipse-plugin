@@ -124,9 +124,10 @@
     <copy file="${hadoop.home}/share/hadoop/common/lib/hadoop-auth-${hadoop.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
     <copy file="${hadoop.home}/share/hadoop/common/lib/commons-cli-${commons-cli.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
     <copy file="${hadoop.home}/share/hadoop/common/lib/netty-${netty.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/htrace-core-${htrace.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
 
     <jar
-      jarfile="${build.dir}/hadoop-${name}-${version}.jar"
+      jarfile="${build.dir}/hadoop-${name}-${hadoop.version}.jar"
       manifest="${root}/META-INF/MANIFEST.MF">
       <manifest>
    <attribute name="Bundle-ClassPath" 
@@ -149,7 +150,8 @@
  lib/slf4j-log4j12-${slf4j-log4j12.version}.jar,
  lib/slf4j-api-${slf4j-api.version}.jar,
  lib/guava-${guava.version}.jar,
- lib/netty-${netty.version}.jar"/>
+ lib/netty-${netty.version}.jar,
+ lib/htrace-core-${htrace.version}.jar"/>
    </manifest>
       <fileset dir="${build.dir}" includes="classes/ lib/"/>
       <!--fileset dir="${build.dir}" includes="*.xml"/-->
