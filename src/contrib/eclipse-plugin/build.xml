@@ -126,6 +126,7 @@
     <copy file="${hadoop.home}/share/hadoop/common/lib/netty-${netty.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
     <copy file="${hadoop.home}/share/hadoop/common/lib/htrace-core-${htrace.version}-incubating.jar"  todir="${build.dir}/lib" verbose="true"/>
 
+
     <jar
       jarfile="${build.dir}/hadoop-${name}-${hadoop.version}.jar"
       manifest="${root}/META-INF/MANIFEST.MF">
