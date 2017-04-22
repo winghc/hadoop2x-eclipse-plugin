@@ -110,48 +110,92 @@
 
 
 
-    <copy file="${hadoop.home}/share/hadoop/common/lib/protobuf-java-${protobuf.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
-    <copy file="${hadoop.home}/share/hadoop/common/lib/log4j-${log4j.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
-    <copy file="${hadoop.home}/share/hadoop/common/lib/commons-cli-${commons-cli.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/tools/lib/commons-httpclient-${commons-httpclient.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/asm-${asm.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/avro-${avro.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/hadoop-annotations-${hadoop.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/paranamer-${paranamer.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/xz-${xz.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/zookeeper-${zookeeper.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/snappy-java-${snappy-java.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/xmlenc-${xmlenc.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/jsr305-${jsr305.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/junit-${junit.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/jetty-util-${jetty-util.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/commons-beanutils-${commons-beanutils.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/commons-beanutils-core-${commons-beanutils-core.version}.jar"  todir="${build.dir}/lib" verbose="true"/>  
     <copy file="${hadoop.home}/share/hadoop/common/lib/commons-configuration-${commons-configuration.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
     <copy file="${hadoop.home}/share/hadoop/common/lib/commons-lang-${commons-lang.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
-    <copy file="${hadoop.home}/share/hadoop/common/lib/commons-collections-${commons-collections.version}.jar"  todir="${build.dir}/lib" verbose="true"/>  
+    <copy file="${hadoop.home}/share/hadoop/common/lib/commons-collections-${commons-collections.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/commons-cli-${commons-cli.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/commons-codec-${commons-codec.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/commons-compress-${commons-compress.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/commons-digester-${commons-digester.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/commons-io-${commons-io.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/commons-logging-${commons-logging.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/commons-math3-${commons-math3.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/commons-net-${commons-net.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/protobuf-java-${protobuf.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/share/hadoop/common/lib/log4j-${log4j.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
     <copy file="${hadoop.home}/share/hadoop/common/lib/jackson-core-asl-${jackson.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
     <copy file="${hadoop.home}/share/hadoop/common/lib/jackson-mapper-asl-${jackson.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
     <copy file="${hadoop.home}/share/hadoop/common/lib/slf4j-log4j12-${slf4j-log4j12.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
     <copy file="${hadoop.home}/share/hadoop/common/lib/slf4j-api-${slf4j-api.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
     <copy file="${hadoop.home}/share/hadoop/common/lib/guava-${guava.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
     <copy file="${hadoop.home}/share/hadoop/common/lib/hadoop-auth-${hadoop.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
-    <copy file="${hadoop.home}/share/hadoop/common/lib/commons-cli-${commons-cli.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
     <copy file="${hadoop.home}/share/hadoop/common/lib/netty-${netty.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
-    <copy file="${hadoop.home}/share/hadoop/common/lib/htrace-core-${htrace.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
-
+    <copy file="${hadoop.home}/share/hadoop/common/lib/htrace-core4-${htrace-core4.version}-incubating.jar"  todir="${build.dir}/lib" verbose="true"/>
     <jar
       jarfile="${build.dir}/hadoop-${name}-${hadoop.version}.jar"
       manifest="${root}/META-INF/MANIFEST.MF">
       <manifest>
    <attribute name="Bundle-ClassPath" 
     value="classes/, 
+ lib/hadoop-mapreduce-client-app-${hadoop.version}.jar,
  lib/hadoop-mapreduce-client-core-${hadoop.version}.jar,
  lib/hadoop-mapreduce-client-common-${hadoop.version}.jar,
  lib/hadoop-mapreduce-client-jobclient-${hadoop.version}.jar,
+ lib/hadoop-mapreduce-client-shuffle-${hadoop.version}.jar,
+ lib/hadoop-yarn-client-${hadoop.version}.jar,
+ lib/hadoop-yarn-common-${hadoop.version}.jar,
+ lib/hadoop-yarn-api-${hadoop.version}.jar,
+ lib/hadoop-yarn-server-common-${hadoop.version}.jar,
  lib/hadoop-auth-${hadoop.version}.jar,
+ lib/hadoop-annotations-${hadoop.version}.jar,
  lib/hadoop-common-${hadoop.version}.jar,
  lib/hadoop-hdfs-${hadoop.version}.jar,
- lib/protobuf-java-${protobuf.version}.jar,
- lib/log4j-${log4j.version}.jar,
  lib/commons-cli-${commons-cli.version}.jar,
+ lib/commons-beanutils-${commons-beanutils.version}.jar
+ lib/commons-beanutils-core-${commons-beanutils-core.version}.jar,
  lib/commons-configuration-${commons-configuration.version}.jar,
  lib/commons-httpclient-${commons-httpclient.version}.jar,
  lib/commons-lang-${commons-lang.version}.jar,  
- lib/commons-collections-${commons-collections.version}.jar,  
+ lib/commons-collections-${commons-collections.version}.jar,
+ lib/commons-codec-${commons-codec.version}.jar,
+ lib/commons-compress-${commons-compress.version}.jar,
+ lib/commons-digester-${commons-digester.version}.jar,
+ lib/commons-io-${commons-io.version}.jar,
+ lib/commons-logging-${commons-logging.version}.jar,
+ lib/commons-math3-${commons-math3.version}.jar,
+ lib/commons-net-${commons-net.version}.jar,
+ lib/avro-${avro.version}.jar,
+ lib/protobuf-java-${protobuf.version}.jar,
+ lib/log4j-${log4j.version}.jar,
  lib/jackson-core-asl-${jackson.version}.jar,
  lib/jackson-mapper-asl-${jackson.version}.jar,
  lib/slf4j-log4j12-${slf4j-log4j12.version}.jar,
  lib/slf4j-api-${slf4j-api.version}.jar,
  lib/guava-${guava.version}.jar,
  lib/netty-${netty.version}.jar,
- lib/htrace-core-${htrace.version}.jar"/>
+ lib/htrace-core4-${htrace-core4.version}-incubating.jar
+ lib/paranamer-${paranamer.version}.jar
+ lib/xz-${xz.version}.jar,
+ lib/zookeeper-${zookeeper.version}.jar,
+ lib/snappy-java-${snappy-java.version}.jar,
+ lib/xmlenc-${xmlenc.version}.jar,
+ lib/jsr305-${jsr305.version}.jar,
+ lib/junit-${junit.version}.jar,
+ lib/jetty-util-${jetty-util.version}.jar"/>
    </manifest>
       <fileset dir="${build.dir}" includes="classes/ lib/"/>
       <!--fileset dir="${build.dir}" includes="*.xml"/-->
