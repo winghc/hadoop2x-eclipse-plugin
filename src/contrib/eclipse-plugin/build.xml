@@ -66,6 +66,7 @@
   </target>
 
  <target name="compile" depends="init, ivy-retrieve-common" unless="skip.contrib">
+ <!-- <target name="compile" unless="skip.contrib"> -->
     <echo message="contrib: ${name}"/>
     <javac
      encoding="${build.encoding}"
@@ -126,6 +127,12 @@
     <copy file="${hadoop.home}/share/hadoop/common/lib/netty-${netty.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
     <copy file="${hadoop.home}/share/hadoop/common/lib/htrace-core-${htrace.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
 
+    <copy file="${hadoop.home}/share/hadoop/common/lib/commons-httpclient-${commons-httpclient.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+
+    <copy file="${hadoop.home}/share/hadoop/common/lib/servlet-api-${servlet-api.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+
+    <copy file="${hadoop.home}/share/hadoop/common/lib/commons-io-${commons-io.version}.jar"  todir="${build.dir}/lib" verbose="true"/>
+
     <jar
       jarfile="${build.dir}/hadoop-${name}-${hadoop.version}.jar"
       manifest="${root}/META-INF/MANIFEST.MF">
@@ -151,6 +158,9 @@
  lib/slf4j-api-${slf4j-api.version}.jar,
  lib/guava-${guava.version}.jar,
  lib/netty-${netty.version}.jar,
+ lib/servlet-api-${servlet-api.version}.jar,
+ lib/commons-io-${commons-io.version}.jar,
+ lib/commons-httpclient-${commons-httpclient.version}.jar,
  lib/htrace-core-${htrace.version}.jar"/>
    </manifest>
       <fileset dir="${build.dir}" includes="classes/ lib/"/>
